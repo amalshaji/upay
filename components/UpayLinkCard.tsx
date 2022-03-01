@@ -7,11 +7,10 @@ import QRCode from 'react-qr-code'
 
 // @ts-ignore
 function UpayLinkCard({ upi_data }) {
-  const [UPILink, setUPILink] = useState('')
   const { upi_id, amount, message } = upi_data
   // @ts-ignore
 
-  let base_link = `upi://pay?pa=${upi_id}`
+  let base_link = `upi://pay?pa=${upi_id}&pn=upay.cf&cu=INR`
   if (amount) {
     base_link += `&am=${amount}`
   }
