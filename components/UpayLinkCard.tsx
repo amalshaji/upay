@@ -5,9 +5,11 @@ import Footer from './Footer'
 import Link from 'next/link'
 import QRCode from 'react-qr-code'
 
+// @ts-ignore
 function UpayLinkCard(props) {
   const [UPILink, setUPILink] = useState('')
   const { upi_id, amount, message } = props.props
+  // @ts-ignore
   const createUPILink = ({ upi_id, amount, message }) => {
     let base_link = `upi://pay?pa=${upi_id}`
     if (amount) {
