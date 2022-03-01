@@ -9,7 +9,6 @@ Quickly generate and share UPI payment(collect) links
 
 ## Inspiration
 
-- I did not want to ask a colleague for the UPI ID.
 - I'm learning react
 
 ## Uses
