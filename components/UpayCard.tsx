@@ -16,10 +16,14 @@ function UpayCard() {
     let upay_link = `https://upay.cf/${upi_id}`
 
     if (amount) {
-      upay_link += `/${amount}`
+      upay_link += `?amount=${amount}`
     }
     if (message) {
-      upay_link += `?message=${message}`
+      if (upay_link.includes('?')) {
+        upay_link += `&message=${message}`
+      } else {
+        upay_link += `?message=${message}`
+      }
     }
 
     navigator.clipboard.writeText(upay_link)
