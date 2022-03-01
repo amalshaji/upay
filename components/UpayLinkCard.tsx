@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 import Footer from './Footer'
@@ -10,20 +10,15 @@ function UpayLinkCard({ upi_data }) {
   const [UPILink, setUPILink] = useState('')
   const { upi_id, amount, message } = upi_data
   // @ts-ignore
-  const createUPILink = ({ upi_id, amount, message }) => {
-    let base_link = `upi://pay?pa=${upi_id}`
-    if (amount) {
-      base_link += `&am=${amount}`
-    }
-    if (message) {
-      base_link += `&tn=${message}`
-    }
-    setUPILink(base_link)
+
+  let base_link = `upi://pay?pa=${upi_id}`
+  if (amount) {
+    base_link += `&am=${amount}`
+  }
+  if (message) {
+    base_link += `&tn=${message}`
   }
 
-  useEffect(() => {
-    createUPILink(upi_data)
-  }, [])
   return (
     <>
       <div className="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow-md sm:p-6 lg:p-8">
@@ -67,11 +62,11 @@ function UpayLinkCard({ upi_data }) {
             )}
           </h5>
           <div className="ml-20">
-            <QRCode value={UPILink} size={150} />
+            <QRCode value={base_link} size={150} />
           </div>
           <a
             type="button"
-            href={UPILink}
+            href={base_link}
             className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
           >
             Pay
