@@ -6,9 +6,9 @@ import Link from 'next/link'
 import QRCode from 'react-qr-code'
 
 // @ts-ignore
-function UpayLinkCard(props) {
+function UpayLinkCard({ upi_data }) {
   const [UPILink, setUPILink] = useState('')
-  const { upi_id, amount, message } = props.props
+  const { upi_id, amount, message } = upi_data
   // @ts-ignore
   const createUPILink = ({ upi_id, amount, message }) => {
     let base_link = `upi://pay?pa=${upi_id}`
@@ -22,8 +22,7 @@ function UpayLinkCard(props) {
   }
 
   useEffect(() => {
-    createUPILink(props.props)
-    console.log('UPILink: ', UPILink)
+    createUPILink(upi_data)
   }, [])
   return (
     <>
@@ -57,6 +56,13 @@ function UpayLinkCard(props) {
                 <span className="ml-1 rounded-md bg-pink-200 px-2 py-1">
                   {upi_id}
                 </span>
+              </p>
+            )}
+          </h5>
+          <h5 className="text-md text-center font-medium text-gray-900">
+            {message && (
+              <p className=" border-l-4 bg-gray-100 text-sm italic">
+                {message}
               </p>
             )}
           </h5>
