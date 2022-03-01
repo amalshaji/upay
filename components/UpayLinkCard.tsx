@@ -15,7 +15,7 @@ function UpayLinkCard({ upi_data }) {
     base_link += `&am=${amount}`
   }
   if (message) {
-    base_link += `&tn=${message}`
+    base_link += `&tn=${encodeURIComponent(message)}`
   }
 
   return (
