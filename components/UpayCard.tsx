@@ -20,9 +20,9 @@ function UpayCard() {
     }
     if (message) {
       if (upay_link.includes('?')) {
-        upay_link += `&message=${message}`
+        upay_link += `&message=${encodeURIComponent(message)}`
       } else {
-        upay_link += `?message=${message}`
+        upay_link += `?message=${encodeURIComponent(message)}`
       }
     }
 
